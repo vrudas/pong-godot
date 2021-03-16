@@ -4,7 +4,7 @@
 [ext_resource path="res://Player/Paddle.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 14, 60 )
+extents = Vector2( 15, 60 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 40.8167, 285.717 )
