@@ -6,6 +6,7 @@ var velocity: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+    randomize()
     velocity.x = [-1, 1][randi() % 2]
     velocity.y = [-0.8, 0.8][randi() % 2]
 
