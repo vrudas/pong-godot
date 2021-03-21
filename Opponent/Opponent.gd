@@ -13,7 +13,6 @@ var ball: KinematicBody2D
 
 func _ready() -> void:
     ball = get_parent().find_node("Ball")
-    pass
 
 
 func _physics_process(delta: float) -> void:
