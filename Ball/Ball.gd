@@ -16,3 +16,7 @@ func _physics_process(delta: float) -> void:
 
     if collision_object:
         velocity = velocity.bounce(collision_object.normal)
+
+
+func stop_ball() -> void:
+    speed = 0

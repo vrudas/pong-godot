@@ -12,10 +12,14 @@ func _on_WallLeft_body_entered(body: Node) -> void:
     reset_ball_position()
     opponentScore += 1
 
+    stop_ball_movement()
+
 
 func _on_WallRight_body_entered(body: Node) -> void:
     reset_ball_position()
     playerScore += 1
+
+    stop_ball_movement()
 
 
 func reset_ball_position() -> void:
@@ -24,6 +28,10 @@ func reset_ball_position() -> void:
         resolution.x / 2,
         resolution.y / 2
     )
+
+
+func stop_ball_movement() -> void:
+    get_tree().call_group("BallGroup", "stop_ball")
 
 
 func _process(delta: float) -> void:
