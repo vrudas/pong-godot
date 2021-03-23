@@ -3,6 +3,7 @@ extends Node
 onready var ball: KinematicBody2D = $Ball
 onready var playerScoreLabel: Label = $PlayerScore
 onready var opponentScoreLabel: Label = $OpponentScore
+onready var countdownTimer: Timer = $CountdownTimer
 
 var playerScore: int = 0
 var opponentScore: int = 0
@@ -14,12 +15,16 @@ func _on_WallLeft_body_entered(body: Node) -> void:
 
     stop_ball_movement()
 
+    countdownTimer.start()
+
 
 func _on_WallRight_body_entered(body: Node) -> void:
     reset_ball_position()
     playerScore += 1
 
     stop_ball_movement()
+
+    countdownTimer.start()
 
 
 func reset_ball_position() -> void:
@@ -37,3 +42,7 @@ func stop_ball_movement() -> void:
 func _process(delta: float) -> void:
     playerScoreLabel.text = str(playerScore)
     opponentScoreLabel.text = str(opponentScore)
+
+
+func _on_CountdownTimer_timeout() -> void:
+    get_tree().call_group("BallGroup", "restart_ball")

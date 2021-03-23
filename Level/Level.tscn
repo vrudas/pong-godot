@@ -102,5 +102,10 @@ position = Vector2( 1216, 360 )
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 640, 360 )
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 [connection signal="body_entered" from="WallLeft" to="." method="_on_WallLeft_body_entered"]
 [connection signal="body_entered" from="WallRight" to="." method="_on_WallRight_body_entered"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]
