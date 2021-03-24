@@ -10,18 +10,19 @@ var opponentScore: int = 0
 
 
 func _on_WallLeft_body_entered(body: Node) -> void:
-    reset_ball_position()
     opponentScore += 1
 
-    stop_ball_movement()
-
-    countdownTimer.start()
+    reset_game_round()
 
 
 func _on_WallRight_body_entered(body: Node) -> void:
-    reset_ball_position()
     playerScore += 1
 
+    reset_game_round()
+
+
+func reset_game_round() -> void:
+    reset_ball_position()
     stop_ball_movement()
 
     countdownTimer.start()
