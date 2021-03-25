@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var collisionSound: AudioStreamPlayer = $CollisionSound
 
 var speed: int = 600
 var velocity: Vector2 = Vector2.ZERO
@@ -14,6 +15,7 @@ func _physics_process(delta: float) -> void:
 
     if collision_object:
         velocity = velocity.bounce(collision_object.normal)
+        collisionSound.play()
 
 
 func stop_ball() -> void:
