@@ -4,6 +4,8 @@ onready var ball: KinematicBody2D = $Ball
 onready var playerScoreLabel: Label = $PlayerScore
 onready var opponentScoreLabel: Label = $OpponentScore
 onready var countdownTimer: Timer = $CountdownTimer
+onready var countdownTimeLabel: Label = $CountdownTime
+
 
 var playerScore: int = 0
 var opponentScore: int = 0
@@ -26,6 +28,7 @@ func reset_game_round() -> void:
     stop_ball_movement()
 
     countdownTimer.start()
+    countdownTimeLabel.show()
 
 
 func reset_ball_position() -> void:
@@ -44,6 +47,10 @@ func _process(delta: float) -> void:
     playerScoreLabel.text = str(playerScore)
     opponentScoreLabel.text = str(opponentScore)
 
+    var timeBeforeGameStart = int(countdownTimer.time_left + 1)
+    countdownTimeLabel.text = str(timeBeforeGameStart)
+
 
 func _on_CountdownTimer_timeout() -> void:
     get_tree().call_group("BallGroup", "restart_ball")
+    countdownTimeLabel.hide()
