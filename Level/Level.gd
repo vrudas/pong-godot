@@ -5,6 +5,7 @@ onready var playerScoreLabel: Label = $PlayerScore
 onready var opponentScoreLabel: Label = $OpponentScore
 onready var countdownTimer: Timer = $CountdownTimer
 onready var countdownTimeLabel: Label = $CountdownTime
+onready var scoreSound: AudioStreamPlayer = $ScoreSound
 
 
 var playerScore: int = 0
@@ -29,6 +30,8 @@ func reset_game_round() -> void:
 
     countdownTimer.start()
     countdownTimeLabel.show()
+
+    scoreSound.play()
 
 
 func reset_ball_position() -> void:
